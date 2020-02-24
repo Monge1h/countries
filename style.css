@@ -100,3 +100,33 @@ body{
 .container__cta:hover{
     background-color: rgb(33, 54, 119);
 }
+
+@media screen and (max-width: 1069px){
+    .container{
+        max-width: 80rem;
+    }
+
+    .container__img{
+        max-width: 30rem;
+        min-width: 30rem;
+    }
+}
+
+@media screen and (max-width: 868px){
+    .container{
+        max-width: 70rem;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .container{
+        padding: 2.5rem;
+        flex-direction: column;
+    }
+
+    .container__img{
+        max-width: 100%;
+        min-width: 100%;
+        transform: translate(0,-8rem);
+    }
+}
