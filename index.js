@@ -7,6 +7,15 @@ async function getLocation()
         return err
     }
 }
+async function getCountryData(country_code) 
+{
+    try{
+        let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${country_code}`);
+        return await response.json();
+    }catch(err){
+        return err
+    }
+}
 
 (async function () {
     const dataLocation = await getLocation()
