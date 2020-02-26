@@ -24,7 +24,7 @@
             <span class="answer">${countryData['currencies'][0]['name']}</span>
         </div>
         <p class="container__text">
-            <a href="#" class="container__cta">Buscar otro pais</a>
+            <a href="#" class="container__cta">Search another country</a>
     </div>`
   })();
 async function getLocation() 
