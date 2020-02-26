@@ -1,10 +1,10 @@
 (async function () {
     const dataLocation = await getLocation()
 
-    const countryCode = dataLocation['countryCode']
+
+    const countryCode = dataLocation['country_code']
 
     const countryData = await getCountryData(countryCode)
-    
     document.getElementById('content').innerHTML = `
     <div class="container__img">
         <img src="${countryData['flag']}" alt="">
@@ -19,7 +19,7 @@
             <span>Sub Region: </span> 
             <span class="answer">${countryData['subregion']}</span>
             <span>Language: </span> 
-            <span class="answer">${countryData['name']}</span>
+            <span class="answer">${countryData['languages'][0]['name']}</span>
             <span>Currency: </span> 
             <span class="answer">${countryData['currencies'][0]['name']}</span>
         </div>
@@ -30,7 +30,7 @@
 async function getLocation() 
 {
     try{
-        let response = await fetch(`http://ip-api.com/json/`);
+        let response = await fetch(`https://ipapi.co/json`);
         return await response.json();
     }catch(err){
         return err
