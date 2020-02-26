@@ -1,3 +1,32 @@
+(async function () {
+    const dataLocation = await getLocation()
+
+    const countryCode = dataLocation['countryCode']
+
+    const countryData = await getCountryData(countryCode)
+    
+    document.getElementById('content').innerHTML = `
+    <div class="container__img">
+        <img src="${countryData['flag']}" alt="">
+    </div>
+    <div class="container__info">
+        <h1 class="container__country">${countryData['name']}</h1>
+        <div class="container__data">
+            <span>Capital: </span> 
+            <span class="answer">${countryData['capital']}</span>
+            <span>Region: </span> 
+            <span class="answer">${countryData['region']}</span>
+            <span>Sub Region: </span> 
+            <span class="answer">${countryData['subregion']}</span>
+            <span>Language: </span> 
+            <span class="answer">${countryData['name']}</span>
+            <span>Currency: </span> 
+            <span class="answer">${countryData['currencies'][0]['name']}</span>
+        </div>
+        <p class="container__text">
+            <a href="#" class="container__cta">Buscar otro pais</a>
+    </div>`
+  })();
 async function getLocation() 
 {
     try{
@@ -17,29 +46,3 @@ async function getCountryData(country_code)
     }
 }
 
-(async function () {
-    const dataLocation = await getLocation()
-
-
-    
-    document.getElementById('content').innerHTML = ` <div class="container__img">
-    <img src="https://restcountries.eu/data/slv.svg" alt="">
-</div>
-<div class="container__info">
-    <h1 class="container__country">El Salvador</h1>
-    <div class="container__data">
-        <span>Capital: </span> 
-        <span class="answer">San Salvador</span>
-        <span>Region: </span> 
-        <span class="answer">America</span>
-        <span>Sub Region: </span> 
-        <span class="answer">Central America</span>
-        <span>Language: </span> 
-        <span class="answer">Spanish</span>
-        <span>Currency: </span> 
-        <span class="answer">USD</span>
-    </div>
-    <p class="container__text">
-        <a href="#" class="container__cta">Buscar otro pais</a>
-    </div>`
-  })();
