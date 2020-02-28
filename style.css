@@ -131,6 +131,7 @@ body{
 @media screen and (max-width: 868px){
     .container{
         max-width: 70rem;
+        height: 90%;
     }
 }
 
@@ -143,6 +144,14 @@ body{
     .container__img{
         max-width: 100%;
         min-width: 100%;
-        transform: translate(0,-8rem);
+        transform: translate(0,-5rem);
+    }
+}
+
+@media screen and (max-height: 640px){
+    .container{
+        height: 115%;
+        transform: translate(0,8rem);
+        flex-direction: column;
     }
 }
