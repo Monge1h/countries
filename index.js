@@ -52,3 +52,24 @@ async function getCountryData(country_code)
     }
 }
 
+async function alertInput()
+{
+    const { value: code } = await Swal.fire({
+        title: 'Search another country',
+        input: 'text',
+        inputValue: "MX",
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return 'You need to write something!'
+          }
+        }
+      })
+      
+      if (code) {
+        const countryCode = code
+
+        const countryData = await getCountryData(countryCode)
+        render(countryData)
+      }
+}
