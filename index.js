@@ -5,6 +5,10 @@
     const countryCode = dataLocation['country_code']
 
     const countryData = await getCountryData(countryCode)
+    render(countryData)
+  })();
+
+function render(countryData){
     document.getElementById('content').innerHTML = `
     <div class="container__img">
         <img src="${countryData['flag']}" alt="">
@@ -24,9 +28,11 @@
             <span class="answer">${countryData['currencies'][0]['name']}</span>
         </div>
         <p class="container__text">
-            <a href="#" class="container__cta">Search another country</a>
+        <div onclick="alertInput()">
+            <a href="#" class="container__cta" onclick = "alertInput()">Search another country</a>
+        </div>
     </div>`
-  })();
+}
 async function getLocation() 
 {
     try{
