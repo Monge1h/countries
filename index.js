@@ -1,8 +1,7 @@
 (async function () {
     const dataLocation = await getLocation()
 
-
-    const countryCode = dataLocation['country_code']
+    const countryCode = dataLocation['country_name']
 
     const countryData = await getCountryData(countryCode)
     render(countryData)
@@ -45,8 +44,9 @@ async function getLocation()
 async function getCountryData(country_code) 
 {
     try{
-        let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${country_code}`);
-        return await response.json();
+        let response = await fetch(`https://restcountries.eu/rest/v2/name/${country_code}`);
+        response = await response.json()
+        return await response[0];
     }catch(err){
         return err
     }
@@ -57,7 +57,7 @@ async function alertInput()
     const { value: code } = await Swal.fire({
         title: 'Search another country',
         input: 'text',
-        inputValue: "MX",
+        inputValue: "",
         showCancelButton: true,
         inputValidator: (value) => {
           if (!value) {
