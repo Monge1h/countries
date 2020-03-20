@@ -70,6 +70,14 @@ async function alertInput()
         const countryCode = code
 
         const countryData = await getCountryData(countryCode)
+        if(countryData === undefined){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "Sorry I couldn't find that country!",
+                footer: ':/'
+              })
+        }
         render(countryData)
       }
 }
