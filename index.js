@@ -10,7 +10,7 @@
 function render(countryData){
     document.getElementById('content').innerHTML = `
     <div class="container__img">
-        <img src="${countryData['flag']}" alt="">
+        <img src="${countryData['flag']}" crossorigin="anonymous" alt="">
     </div>
     <div class="container__info">
         <h1 class="container__country">${countryData['name']}</h1>
@@ -31,6 +31,21 @@ function render(countryData){
             <a href="#" class="container__cta" onclick = "alertInput()">Search another country</a>
         </div>
     </div>`
+    const colorThief = new ColorThief();
+    const img = document.querySelector('img');
+
+    // Make sure image is finished loading
+    if (img.complete) {
+        let test = colorThief.getColor(img);
+        document.querySelector('a').style.background = `rgb(${test})`;
+        document.querySelector('h1').style.color = `rgb(${test})`;
+    } else {
+      img.addEventListener('load', function() {
+        let test = colorThief.getColor(img);
+        document.querySelector('a').style.background = `rgb(${test})`;
+        document.querySelector('h1').style.color = `rgb(${test})`;
+      });
+    }
 }
 async function getLocation() 
 {
